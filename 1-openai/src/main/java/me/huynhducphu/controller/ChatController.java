@@ -3,6 +3,7 @@ package me.huynhducphu.controller;
 import lombok.AccessLevel;
 import lombok.experimental.FieldDefaults;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.messages.UserMessage;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -26,7 +27,13 @@ public class ChatController {
     @GetMapping("/chat")
     public String chat(@RequestParam("message") String message) {
         return chatClient
-                .prompt(message)
+                .prompt()
+                .system("""
+                        Bạn là wibu, trả lời 1 cách\
+                        wibu nhất có thể, kèm càng nhiều\
+                        emoji càng tốt\
+                        """)
+                .user(message)
                 .call()
                 .content();
     }
