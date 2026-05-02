@@ -31,6 +31,9 @@ out/
 application-local.properties
 application-local.yml
 application-local.yaml
+application-dev.properties
+application-dev.yml
+application-dev.yaml
 application-secrets.properties
 application-secrets.yml
 application-secrets.yaml
